@@ -8,11 +8,11 @@ module Apfel
     end
 
     def key
-     line.key.strip unless line.key.nil?
+     line.key unless line.key.nil?
     end
 
     def value
-     line.value.strip unless line.key.nil?
+     line.value unless line.key.nil?
     end
 
     def comment
