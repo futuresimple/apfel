@@ -161,13 +161,13 @@ multiline comment */
       it 'should have the correct keys' do
         parsed_file.keys[0].should == 'anger'
         parsed_file.keys[1].should == 'anxiety'
-        parsed_file.keys[2].should == 'boredom'
+        parsed_file.keys[2].should == 'boredom"'
       end
 
       it 'should have the correct values' do
         parsed_file.values[0].should == 'Zorn'
         parsed_file.values[1].should == 'Sorge'
-        parsed_file.values[2].should == 'Langeweile'
+        parsed_file.values[2].should == 'Langeweile"'
       end
 
       describe 'should have the correct comments' do
@@ -180,7 +180,7 @@ multiline comment */
         end
 
         it 'should have the correct comment for boredom' do
-          parsed_file.comments['boredom'].should == 'ennui'
+          parsed_file.comments['boredom"'].should == 'ennui'
         end
       end
     end

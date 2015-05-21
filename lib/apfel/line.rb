@@ -38,7 +38,7 @@ module Apfel
     end
 
     def key_value_pair?
-      !!(/^\s*"([^"]+)"\s*=/.match(content))
+      content[0] == '"' && content.gsub(' ', '').include?('"="')
     end
 
     def cleaned_content
@@ -55,13 +55,13 @@ module Apfel
 
     def key
       if key_value_pair?
-        cleaned_content.partition(/"\s*=\s*"/)[0].gsub!(/(^"|"$)/, "")
+        cleaned_content.split(/"\s*=\s*"/).first.gsub(/^"/, '').gsub('\"', '"')
       end
     end
 
     def value
       if key_value_pair?
-        cleaned_content.partition(/"\s*=\s*"/)[2].gsub!(/(^"|"$)/, "")
+        cleaned_content.split(/"\s*=\s*"/).last.gsub(/"$/, '').gsub('\"', '"')
       end
     end
 
